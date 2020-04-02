@@ -1,0 +1,26 @@
+doctype html
+html
+    head !{style}
+    body
+        article
+            section 
+                img(src=productImage)
+
+            section
+                h1 !{"Description"} 
+                p #{descriptionShort}   
+    
+            section 
+                h1 !{"Price"}
+                p #{price}
+    
+            section      
+                h1 !{"Condition"} 
+                p #{condition}
+
+            section 
+                h1 !{"Details"}
+                p #{details}
+
+            form(method="GET" action="/filledForm" name="goBack") 
+                input(type="submit" value="back to form")

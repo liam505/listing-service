@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+
+<main>
+    
+    <form  method="POST" action="/submitListing" enctype="multipart/form-data" name="form">
+
+        <label for="descriptionShort"> Description </label>
+        <input type="text" name="descriptionShort" id="descriptionShort" placeholder="Please provide a short description of item" required><br>
+
+        <label for="condition">Choose condition:</label>
+
+        <select id="condition" name="condition">
+            <option value="New">New</option>
+            <option value="Opened - never used">Opened – never used</option>
+            <option value="Manufacturer refurbished">Manufacturer refurbished</option>
+            <option value=" Seller refurbished"> Seller refurbished</option>
+            <option value="Used">Used</option>
+            <option value="For parts or not working">For parts or not working</option>
+        </select>
+
+   
+        <label for="price"> Price</label>
+        <input type="number" name="price" id="price" required><br>
+
+        <label for="details"> Details</label>
+        <textarea id="details" name="details" rows="4" cols="50" placeholder="Please provide details of the product" required ></textarea>
+        
+        <input type="file" name="productImage" id="productImage"> 
+
+        <input type="submit" name="submit" id="submit" value="submit listing">
+
+
+    </form>
+</main>
+
+</html>
