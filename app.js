@@ -21,7 +21,7 @@ const compiledHomepPageTemplate = pug.compileFile('views/homepage.pug');
 const compiledListingTemplate = pug.compileFile('views/listing.pug');
 
 app.get("/", (req,res) => {
-            console.log("back at homepage",submissionValues);
+          
             let style = `<link rel="stylesheet" href="homepageStyles.css">`
             let homepage = compiledHomepPageTemplate({
                 descriptionShort: "",
@@ -50,8 +50,6 @@ app.get("/filledform", (req,res) => {
 
 app.post("/submitListing", upload.single('productImage'), (req,res) =>{
     let ext = ".jpg";
-
-    console.log("req body of sumbit",req.body);
 
     if(req.file!==undefined){
         let filename = req.file.path.split("\\").pop();
