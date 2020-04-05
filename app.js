@@ -7,12 +7,15 @@ const app= express();
 const fs = require('fs');
 
 app.use(express.urlencoded({extended: false}));
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/views'));
-app.use(express.static(__dirname + '/uploads'));
+
+app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'views')));
+app.use(express.static(path.join(__dirname,'uploads')));
+
 app.set('view engine', 'pug');
 
 let upload = multer({dest: "uploads/"});
+
 let submissionValues;
 let targetPath;
 let fileName;
@@ -22,7 +25,6 @@ const compiledListingTemplate = pug.compileFile('views/listing.pug');
 
 app.get("/", (req,res) => {
           
-            let style = `<link rel="stylesheet" href="homepageStyles.css">`
             let homepage = compiledHomepPageTemplate({
                 descriptionShort: "",
                 condition: "",
@@ -42,7 +44,6 @@ app.get("/filledform", (req,res) => {
         condition: submissionValues.condition,
         price: submissionValues.price,
         details: submissionValues.details,
-        style: style
     })  
 
     res.send(homepage)
@@ -82,13 +83,11 @@ app.get("/listing", (req,res)=>{
         condition: submissionValues.condition,
         price: submissionValues.price,
         details: submissionValues.details,
-        productImage: fileName,
-        style: style
+        productImage: fileName
     })
     
-    res.send(listing)
+    res.send(listing);
 })
-
 
 app.listen(PORT);
 console.log("server is listening");
