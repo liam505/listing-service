@@ -30,14 +30,12 @@ app.get("/", (req,res) => {
                 condition: "",
                 price:"",
                 details:"",
-                style: style,
             })
             
             res.send(homepage) 
 })
 
 app.get("/filledform", (req,res) => {
-    let style = `<link rel="stylesheet" href="homepageStyles.css">`
     
     let homepage = compiledHomepPageTemplate({
         descriptionShort: submissionValues.descriptionShort,
@@ -71,12 +69,12 @@ app.post("/submitListing", upload.single('productImage'), (req,res) =>{
     }
   
     submissionValues=req.body;
+    console.log(submissionValues);
     res.redirect("/listing");
 })
 
 app.get("/listing", (req,res)=>{
 
-    let style = `<link rel="stylesheet" href="styles.css">`
 
     let listing = compiledListingTemplate({
         descriptionShort: submissionValues.descriptionShort,
